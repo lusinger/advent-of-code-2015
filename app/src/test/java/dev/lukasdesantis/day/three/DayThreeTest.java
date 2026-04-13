@@ -10,7 +10,7 @@ class DayThreeTest {
     void test_amountOfLocationsRecieved_atleastOnePresent() {
         String input = "<>^";
         String startingPos = "0-0";
-        Map<String, Integer> locationsDelivered = DayThree.getLocationsDelivered(input);
+        Map<String, Integer> locationsDelivered = DayThree.getLocationsDelivered(startingPos, input);
 
         assertEquals(3, locationsDelivered.size());
     }
