@@ -8,14 +8,32 @@ public class DayOne {
             return initialFloor;
         }
 
-        for (char character : input.toCharArray()) {
-            if (character == '(') {
-                initialFloor++;
-            } else if (character == ')') {
-                initialFloor--;
+        int currentFloor = initialFloor;
+
+        boolean visitedBasement = false;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '(') {
+                currentFloor++;
+            } else if (input.charAt(i) == ')') {
+                currentFloor--;
+            }
+
+            int position = positionOfFirstBasementVisit(visitedBasement, i, currentFloor);
+            if (position != -1) {
+                IO.println(position);
+                visitedBasement = true;
             }
         }
 
-        return initialFloor;
+        return currentFloor;
+    }
+
+    public static int positionOfFirstBasementVisit(boolean visitedBasement, int floorIndex, int currentFloor) {
+        if (!visitedBasement && currentFloor == -1) {
+            return floorIndex + 1;
+        }
+
+        return -1;
     }
 }
