@@ -13,4 +13,34 @@ class DayOneTest {
         int targetFloor = DayOne.retrieveTargetFloor(initialFloor, input);
         assertEquals(138, targetFloor);
     }
+
+    @Test
+    void test_returnOfPositionOfFirstBasementVisit() {
+        boolean visitedBasement = false;
+        int floorIndex = 10;
+        int currentFloor = -1;
+
+        int positionFirstVisit = DayOne.positionOfFirstBasementVisit(visitedBasement, floorIndex, currentFloor);
+        assertEquals(11, positionFirstVisit);
+    }
+
+    @Test
+    void test_returnNegativeOne_ifBasementNotVisited() {
+        boolean visitedBasement = true;
+        int floorIndex = 10;
+        int currentFloor = -1;
+
+        int positionFirstVisit = DayOne.positionOfFirstBasementVisit(visitedBasement, floorIndex, currentFloor);
+        assertEquals(-1, positionFirstVisit);
+    }
+
+    @Test
+    void test_returnNegativeOne_ifNotFirstBasementFloor() {
+        boolean visitedBasement = false;
+        int floorIndex = 10;
+        int currentFloor = -3;
+
+        int positionFirstVisit = DayOne.positionOfFirstBasementVisit(visitedBasement, floorIndex, currentFloor);
+        assertEquals(-1, positionFirstVisit);
+    }
 }
